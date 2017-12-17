@@ -30,12 +30,12 @@ var getTeacherInfo = function(name, callback) {
 
 var prepareInfoString = function(teacher, info_str) {
     strings = {
-        email: '%t hat die E-Mail: %i',
-        name: 'Herr/Frau %t heißt mit vollem Namen: %i',
-        first_name: 'Herr/Frau %t heißt mit Vornamen %i',
-        last_name: 'Herr/Frau %t heißt mit Nachnamen %i',
-        subjects: 'Herr/Frau %t unterrichtet %i',
-        extra_functions: 'Herr/Frau %t ist %i'
+        email: '%g %t hat die E-Mail: %i',
+        name: '%g %t heißt mit vollem Namen: %i',
+        first_name: '%g %t heißt mit Vornamen %i',
+        last_name: '%g %t heißt mit Nachnamen %i',
+        subjects: '%g %t unterrichtet %i',
+        extra_functions: '%g %t ist %i'
     }
     info = teacher[info_str]
     i_string = ''
@@ -45,7 +45,7 @@ var prepareInfoString = function(teacher, info_str) {
         last = info.pop()
         i_string = info.join(', ') + ' und ' + last
     }
-    return strings[info_str].replace('%t', teacher.last_name).replace('%i', i_string)
+    return strings[info_str].replace('%t', teacher.last_name).replace('%i', i_string).replace('%g', teacher.title)
 }
 
 var getAllTeachers = function(callback) {
