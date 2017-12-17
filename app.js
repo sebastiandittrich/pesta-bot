@@ -69,7 +69,7 @@ process.env.LUIS_MODEL_URL = "https://westus.api.cognitive.microsoft.com/luis/v2
 
 // Setup Restify Server
 var server = restify.createServer();
-server.listen(3978, function() {
+server.listen(process.env.port || process.env.PORT || 3978, function() {
     console.log('%s listening to %s', server.name, server.url)
 });
 
